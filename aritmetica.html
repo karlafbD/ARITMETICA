@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <h3><i><center>Karla Fuentes Blanca y Karol Romero Caballero</center></i></h3>
+    <h1><b><center>ARITMETICA</center></b></h1><br>
+    <style>
+         body { background: linear-gradient(to bottom, #7d62a8, #DBC9F5); margin: 0; height: 100vh }
+
+    </style>
+    <script>
+        function aritmetica(){
+        document.write("<h2><center>Arreglo original: " + this.join(", ") + "</center></h2><br>");
+        this.sort(function(a, b) {
+        return a - b;
+        });
+        document.write("<h2><center>Arreglo ordenado: " + this.join(", ") + "</center></h2><br>");
+        function media(){
+            var suma=0;
+            for(var i=0;i<this.length;i++){
+                suma+=this[i];
+            }
+           var resmedia= suma/this.length;
+           document.write("<h2><center>La Media es: "+resmedia+"</center></h2><br>");
+           return resmedia;
+        }
+        function medina(){
+            this.sort(function(a, b) {
+        return a - b;
+        });
+        var length=this.length;
+        var mid=Math.floor(length/2);
+        /*if(length % 2 == 0){
+            var resmediana=(this[mid-1]+ this[mid])/2;
+        }*/
+        //else{
+            resmediana= this[mid];
+       // }
+        document.write("<h2><center>La Mediana es: "+resmediana+"</center></h2><br>");
+        return resmediana;
+        }
+        function moda(){
+            var moda=null;
+            var mds=0; 
+            for(var i=0;i<this.length;i++){
+              var tnum=this[i];
+              var tmds=0;
+                for(var k=0;k<this.length;k++){
+                 if(this[k]===tnum){
+                     tmds++;
+                    }
+                }
+                if(tmds>mds){
+                     moda=[tnum];
+                    mds=tmds;
+                }else if(tmds===mds&& moda.indexOf(tnum)===-1){
+                    moda.push(tnum);
+                }
+             }
+            document.write("<h2><center>La moda es: " + moda + "</center></h2><br>");
+            return moda;
+        }
+        media.call(this);
+        medina.call(this);
+        moda.call(this);
+    }
+        Array.prototype.metodos=aritmetica;
+        var nume = [];
+        var resp;
+        do {
+         resp = confirm("Desea ingresar un numero?");
+        if (!resp) {
+            break;
+        }
+        var num = parseInt(prompt("Ingresa un numero: "));
+        if (isNaN(num)) {
+            alert("Debe ser un caracter numerico :)");
+        } else {
+            nume.push(num);
+        }
+    } while (resp);
+
+    nume.metodos(nume);
+    </script>
+</head>
+<body>
+</body>
+</html>
